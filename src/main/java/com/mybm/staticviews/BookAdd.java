@@ -42,7 +42,7 @@ public class BookAdd extends JFrame {
 		txtPublishDate=new JTextField(12);
 		labPrice=new JLabel("价格");
 		txtPrice=new JTextField(12);
-		//�������ƣ����ߣ������磬���������ڣ��۸񣬿κ��Ҳ��䡣
+
 		bookPanel.add(labISBN);
 		bookPanel.add(txtISBN);
 		bookPanel.add(labType);
