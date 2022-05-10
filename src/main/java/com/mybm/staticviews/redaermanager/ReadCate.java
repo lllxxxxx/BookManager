@@ -1,82 +1,68 @@
 package com.mybm.staticviews.redaermanager;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class ReadCate {
+public class ReadCate extends JFrame implements ActionListener {
 
-    public static void rCate(){
-        JFrame Jcate=new JFrame("读者类型管理");
-        Jcate.setSize(600,730);
-        JPanel pTop=new JPanel(null);
-        JPanel pBot=new JPanel(null);
+    private JPanel[] panel;
+    private JButton[] buttons;
+    private JLabel[] labels;
+    private JTextField[] fields;
 
+    private JButton b1;
+    private JLabel l1;
+    private JTextField f1;
 
-        pTop.setBounds(0,0,600,400);
-        Jcate.add(pTop);
-        pTop.setBackground(Color.yellow);
-        SelectAndUpadte.top(pTop,new String[]{"读者类型编号","读者类型名称","可借图书数量","可借图书期限"});
+    private JTable table;
+    private JScrollPane js;
+    private DefaultTableModel model;
 
+    public ReadCate(String s){
+        super(s);
+        this.setSize(500,800);
+        Object[][] o=null;
+        String[] c=new String[]{};
+        String[] label=new String[]{"读者类型编号","读者类型名称","可借图书数量","可借图书期限"};
+        String[] filed=new String[]{"添加","修改","删除","退出"};
+        panel=new JPanel[5];
+        for (int i = 0; i < panel.length; i++) {
+            panel[i]=new JPanel();
+        }
+        panel[0].setLayout(new FlowLayout());
+        panel[1].setLayout(new BorderLayout());
+        this.add(panel[0]);
 
-        pBot.setBounds(10,400,600,330);
-        Jcate.add(pBot);
-        pBot.setBackground(Color.MAGENTA);
-        bot(pBot);
+        model=new DefaultTableModel(o,c);
+        table=new JTable(model);
+        js=new JScrollPane(table);
+        l1=new JLabel("读者类型");
+        f1=new JTextField(10);
+        b1=new JButton("查询");
+        panel[4].add(l1);
+        panel[4].add(f1);
+        panel[4].add(b1);
+        panel[3].add(js);
+        panel[1].add(panel[4],BorderLayout.NORTH);
+        panel[1].add(panel[3],BorderLayout.SOUTH);
+        panel[0].add(panel[1]);
+        fields=new JTextField[4];
+        ViewUtiles.bottom(label,filed,panel[2],labels,fields,buttons,4,4,this);
+        panel[0].add(panel[2]);
 
-
-        Jcate.setVisible(true);
-        Jcate.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-
-    private static void bot(JPanel jp){
-        JLabel id=new JLabel("读者类型编号:");
-        JLabel name=new JLabel("读者类型名称:");
-        JLabel count=new JLabel("可借图书数量:");
-        JLabel date=new JLabel("可借图书期限:");
-
-        JTextField idTxt=new JTextField();
-        JTextField nameTxt=new JTextField();
-        JTextField countTxt=new JTextField();
-        JTextField dateTxt=new JTextField();
-
-        JButton add=new JButton("添加");
-        JButton update=new JButton("修改");
-        JButton delete=new JButton("删除");
-        JButton exit=new JButton("退出");
-
-        jp.add(id);
-        id.setBounds(10,410,100,25);
-        jp.add(name);
-        name.setBounds(310,410,100,25);
-
-        jp.add(count);
-        count.setBounds(10,510,100,25);
-        jp.add(date);
-        date.setBounds(310,510,100,25);
-
-        jp.add(idTxt);
-        idTxt.setBounds(100,410,160,25);
-        jp.add(nameTxt);
-        nameTxt.setBounds(420,410,160,25);
-
-        jp.add(countTxt);
-        countTxt.setBounds(100,510,160,25);
-        jp.add(dateTxt);
-        dateTxt.setBounds(420,510,160,25);
-
-        jp.add(add);
-        jp.add(update);
-        jp.add(delete);
-        jp.add(exit);
-
-        add.setBounds(165,610,60,25);
-        update.setBounds(235,610,60,25);
-        delete.setBounds(305,610,60,25);
-        exit.setBounds(375,610,60,25);
+        this.setVisible(true);
     }
 
     public static void main(String[] args) {
-        rCate();
+        new ReadCate("");
     }
 
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+    }
 }
