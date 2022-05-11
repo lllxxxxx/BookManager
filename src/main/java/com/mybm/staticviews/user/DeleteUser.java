@@ -36,12 +36,9 @@ public class DeleteUser extends JFrame {
         panel.add(b[0]);
         panel.add(b[1]);
         this.setSize(500,600);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
     }
 
-    public static void main(String[] args) {
-        DeleteUser deleteUse=new DeleteUser("ff");
-    }
 }

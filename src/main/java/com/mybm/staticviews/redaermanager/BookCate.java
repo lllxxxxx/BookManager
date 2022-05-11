@@ -32,7 +32,7 @@ public class BookCate extends JFrame {
         this.setSize(500,500);
 
         panel=new JPanel(new BorderLayout());
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.panel.setBackground(Color.yellow);
         this.add(this.panel);
 
@@ -95,8 +95,6 @@ public class BookCate extends JFrame {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        BookCate c=new BookCate("dd");
-    }
+
 
 }

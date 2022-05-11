@@ -82,11 +82,9 @@ public class BookRT extends JFrame {
             ps[5].add(buttons[i]);
         }
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        BookRT d=new BookRT("");
-    }
+
 }

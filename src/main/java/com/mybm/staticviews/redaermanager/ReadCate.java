@@ -1,5 +1,10 @@
 package com.mybm.staticviews.redaermanager;
 
+/**
+ * @author: lllxxx
+ * @date: 2022.5.11
+ */
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -56,9 +61,7 @@ public class ReadCate extends JFrame implements ActionListener {
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        new ReadCate("");
-    }
+
 
 
     @Override

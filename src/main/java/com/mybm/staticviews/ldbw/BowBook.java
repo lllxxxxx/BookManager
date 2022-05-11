@@ -83,11 +83,9 @@ public class BowBook extends JFrame {
             ps[5].add(buttons[i]);
         }
 
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
-    public static void main(String[] args) {
-        BowBook bowBook=new BowBook("图书节约");
-    }
+
 }

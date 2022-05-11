@@ -43,12 +43,10 @@ public class ModPsw extends JFrame {
             panel.add(l1[i]);
             panel.add(f1[i]);
         }
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }
 
 
-    public static void main(String[] args) {
-        ModPsw n=new ModPsw("xiugai");
-    }
+
 }

@@ -1,5 +1,19 @@
 package com.mybm.staticviews;
 
+/**
+ * @author: lllxxx
+ * @date: 5.11
+ */
+
+import com.mybm.staticviews.ldbw.BookRT;
+import com.mybm.staticviews.ldbw.BowBook;
+import com.mybm.staticviews.redaermanager.BookCate;
+import com.mybm.staticviews.redaermanager.ReadCate;
+import com.mybm.staticviews.redaermanager.ReaderAdd;
+import com.mybm.staticviews.redaermanager.SelectAndUpadte;
+import com.mybm.staticviews.user.AddUser;
+import com.mybm.staticviews.user.DeleteUser;
+import com.mybm.staticviews.user.ModPsw;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,37 +22,23 @@ import java.awt.event.ActionListener;
 public class Library extends JFrame implements ActionListener {
 	private JMenuBar bar;
 	private JMenu menuBook;
-	private JMenuItem itemBookAdd,itemBookSelect,libdel,readadd,readdelete,borrow,retur;
+	private JMenuItem[] jMenuItems;
 	public Library(String s)
 	{
 		super(s);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		String[] sl=new String[]{"删除用户","添加用户","图书类型管理","读者信息查询与修改","读者类型管理","修改密码",
+				"读者信息添加","图书借阅","图书归还", "图书增加","图书查询与修改"};
 		setSize(1000,800);
 		setLocationRelativeTo(null);
 		bar=new JMenuBar();
 		setJMenuBar(bar);
 		menuBook=new JMenu("哈哈哈");
-		itemBookAdd=new JMenuItem("图书增加");
-		itemBookSelect=new JMenuItem("图书查询");
-		libdel=new JMenuItem("图书删除");
-		readadd=new JMenuItem("读者增加");
-		readdelete=new JMenuItem("读者删除");
-		borrow=new JMenuItem("借书");
-		retur=new JMenuItem("还书");
-		menuBook.add(libdel);
-		menuBook.add(readadd);
-		menuBook.add(readdelete);
-		menuBook.add(borrow);
-		menuBook.add(retur);
-		menuBook.add(itemBookAdd);
-		menuBook.add(itemBookSelect);
-		itemBookAdd.addActionListener(this);
-		itemBookSelect.addActionListener(this);
-		libdel.addActionListener(this);
-		readadd.addActionListener(this);
-		readdelete.addActionListener(this);
-		borrow.addActionListener(this);
-		retur.addActionListener(this);
+		jMenuItems=new JMenuItem[11];
+		for (int i = 0; i < jMenuItems.length; i++) {
+			jMenuItems[i]=new JMenuItem(sl[i]);
+			menuBook.add(jMenuItems[i]);
+			jMenuItems[i].addActionListener(this);
+		}
 		bar.add(menuBook);
 
 		setVisible(true);			
@@ -50,11 +50,39 @@ public class Library extends JFrame implements ActionListener {
 		String text = jMenuItem.getText();
 		System.out.println(text);
 		switch (text){
-			case "图书增加":
-				BookAdd bookAdd=new BookAdd("图书添加");
+			case "删除用户":
+				new DeleteUser("删除用户");
 				break;
-			case "图书查询":
-				BookSelectModify bookSelectModify=new BookSelectModify();
+			case "添加用户":
+				new AddUser("添加用户");
+				break;
+			case "图书类型管理":
+				new BookCate("图书类型管理");
+				break;
+			case "读者信息查询与修改":
+				new SelectAndUpadte("读者信息查询与修改");
+				break;
+			case "读者类型管理":
+				new ReadCate("读者类型管理");
+				break;
+			case "修改密码":
+				new ModPsw("修改密码");
+				break;
+			case "读者信息添加":
+				new ReaderAdd("读者信息添加");
+				break;
+			case "图书借阅":
+				new BowBook("图书借阅");
+				break;
+			case "图书归还":
+				new BookRT("图书归还");
+				break;
+			case "图书增加":
+				new BookAdd("图书增加");
+				break;
+			case "图书查询与修改":
+				new BookSelectModify();
+				break;
 		}
 	}
 

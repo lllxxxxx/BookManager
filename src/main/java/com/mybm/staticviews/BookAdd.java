@@ -67,13 +67,10 @@ public class BookAdd extends JFrame {
 		btnPanel.add(btnReset);
 		btnPanel.add(btnExit);
 		panel.add(btnPanel,BorderLayout.SOUTH);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		setVisible(true);		
 	}
-	public static void main(String[] args) {
-		new BookAdd("图书添加");
 
-	}
 
 }

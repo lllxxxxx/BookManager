@@ -1,5 +1,6 @@
 package com.mybm.staticviews;
 
+
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -94,8 +95,6 @@ public class BookSelectModify extends JFrame {
 
 		setVisible(true);
 	}
-	public static void main(String[] args) {
-		new BookSelectModify();
-	}
+
 
 }
