@@ -6,16 +6,16 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Login extends JFrame implements ActionListener {
+public class Login extends JFrame {
 	private JPanel myPanel;
 	private JLabel labName,labPassword;
 	private JTextField txtName;
 	private JPasswordField txtPassword;
 	private JButton btnConfirm,btnReset;
 
-	public Login(String name)
+	public Login(String s)
 	{
-		super(name);//框架类设标题
+		super(s);//框架类设标题
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(200,300);
 		setLocationRelativeTo(null);
@@ -28,8 +28,28 @@ public class Login extends JFrame implements ActionListener {
 		txtPassword.setEchoChar('*');
 		btnConfirm=new JButton("登录");
 		btnReset=new JButton("重置");
-		btnConfirm.addActionListener(this);
-		btnReset.addActionListener(this);
+		btnConfirm.addActionListener(e -> {
+			if(e.getSource()==btnConfirm) {
+				String password = String.valueOf(txtPassword.getPassword());
+
+				String name = txtName.getText();
+				Boolean is = false;
+				try {
+					is = UserDAO.login(name, password);
+					if (is == true) {
+						Library library = new Library("管理");
+					} else {
+						JOptionPane.showMessageDialog(null, "error");
+					}
+				} catch (Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
+		btnReset.addActionListener(e -> {
+			txtPassword.setText("");
+			txtName.setText("");
+		});
 		myPanel.add(labName);
 		myPanel.add(txtName);
 		myPanel.add(labPassword);
@@ -40,24 +60,4 @@ public class Login extends JFrame implements ActionListener {
 	}
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource()==btnConfirm){
-			String  password = String.valueOf(txtPassword.getPassword());
-
-			String name=txtName.getText();
-			Boolean is=false;
-			try {
-				is= UserDAO.login(name,password);
-				if(is==true){
-					Library library=new Library("管理");
-				}else{
-					JOptionPane.showMessageDialog(null,"error");
-				}
-			} catch (Exception ex) {
-				ex.printStackTrace();
-			}
-
-		}
-	}
 }

@@ -1,5 +1,7 @@
 package com.mybm.staticviews;
 
+import com.mybm.dao.BookDAO;
+
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
@@ -65,10 +67,30 @@ public class BookAdd extends JFrame {
 		btnPanel.add(btnReset);
 		btnPanel.add(btnExit);
 		btnReset.addActionListener(e -> {
-
+			String[] s1=new String[6];
+			for (int i = 0; i < 6; i++) {
+				s1[i]=field[i].getText();
+			}
+			String com= (String) cmbBookType.getSelectedItem();
+			Boolean is=false;
+			try {
+				is=BookDAO.AddBook(s1,com);
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			if(is){
+				JOptionPane.showMessageDialog(null,"succ");
+			}else {
+				JOptionPane.showMessageDialog(null,"error");
+			}
 		});
 		btnExit.addActionListener(e -> {
 			this.dispose();
+		});
+		btnReset.addActionListener(e -> {
+			for(JTextField f:field){
+				f.setText("");
+			}
 		});
 		panel.add(btnPanel,BorderLayout.SOUTH);
 		
