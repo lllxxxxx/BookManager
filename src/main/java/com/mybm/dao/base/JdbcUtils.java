@@ -1,4 +1,4 @@
-package com.mybm.dao;
+package com.mybm.dao.base;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,7 +9,7 @@ import java.util.Properties;
 
 /**
  * @author: lllxxx
- * @description: TODO
+ * @description:
  * @date: 2022/5/8 11:03
  */
 public class JdbcUtils {

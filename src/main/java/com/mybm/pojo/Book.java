@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
  * @description:
  * @date: 2022/5/12 12:32
  */
-@Data
+@Data()
 @AllArgsConstructor
 @NoArgsConstructor
 public class Book {

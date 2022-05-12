@@ -1,12 +1,10 @@
 package com.mybm.dao;
 
-import com.github.drinkjava2.dbutilspro.DbPro;
+import com.mybm.dao.base.JdbcUtils;
 import com.mybm.pojo.Users;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.ArrayHandler;
 import org.apache.commons.dbutils.handlers.ArrayListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
-import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -24,7 +22,7 @@ public class UserDAO {
     private static Connection conn;
 
     public static Boolean login(String name,String psw) throws Exception {
-        conn=JdbcUtils.getConnerction();
+        conn= JdbcUtils.getConnerction();
         QueryRunner queryRunner=new QueryRunner();
         String sql="SELECT * FROM users WHERE `name`=?";
         Users users = queryRunner.query(conn,sql, new BeanHandler<Users>(Users.class), name);
