@@ -19,8 +19,8 @@ public class compu extends JFrame implements ActionListener {
     private JPanel panel;
 
     public compu(){
-        String[] lab=new String[]{"第一个","第二个"};
-        String[] but=new String[]{"add","exit"};
+        String[] lab=new String[]{"第一个数字","第二个数字"};
+        String[] but=new String[]{"相加","退出"};
         panel=new JPanel();
         fields=new JTextField[2];
         ViewUtiles.bottom(lab,but,panel,labels,fields,buttons,2,2,this);

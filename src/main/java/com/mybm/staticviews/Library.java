@@ -23,9 +23,20 @@ public class Library extends JFrame implements ActionListener {
 	private JMenuBar bar;
 	private JMenu menuBook;
 	private JMenuItem[] jMenuItems;
-	public Library(String s)
-	{
+	public Library(String s) {
 		super(s);
+		try {
+			String lookAndFeel = UIManager.getSystemLookAndFeelClassName();
+			UIManager.setLookAndFeel(lookAndFeel);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 		String[] sl=new String[]{"删除用户","添加用户","图书类型管理","读者信息查询与修改","读者类型管理","修改密码",
 				"读者信息添加","图书借阅","图书归还", "图书增加","图书查询与修改"};
 		setSize(1000,800);

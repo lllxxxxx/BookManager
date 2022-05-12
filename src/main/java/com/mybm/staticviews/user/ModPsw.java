@@ -1,5 +1,7 @@
 package com.mybm.staticviews.user;
 
+import com.mybm.dao.UserDAO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -43,6 +45,22 @@ public class ModPsw extends JFrame {
             panel.add(l1[i]);
             panel.add(f1[i]);
         }
+        b1.addActionListener(e -> {
+            Boolean is=false;
+            try {
+                is=UserDAO.updatePsw(f1[0].getText(),f1[1].getText());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            if(is){
+                JOptionPane.showMessageDialog(null,"succ");
+            }else {
+                JOptionPane.showMessageDialog(null,"error");
+            }
+        });
+        b2.addActionListener(e -> {
+            this.dispose();
+        });
 //        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
     }

@@ -1,5 +1,7 @@
 package com.mybm.staticviews.user;
 
+import com.mybm.dao.UserDAO;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -37,6 +39,22 @@ public class AddUser extends JFrame {
         b2=new JButton("取消");
         p2.add(b1);
         p2.add(b2);
+        b1.addActionListener(e -> {
+            Boolean is=false;
+            try {
+                is=UserDAO.AddUser(f1[0].getText(),f1[1].getText());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            if(is){
+                JOptionPane.showMessageDialog(null,"succ");
+            }else {
+                JOptionPane.showMessageDialog(null,"error");
+            }
+        });
+        b2.addActionListener(e -> {
+            this.dispose();
+        });
         String[] c=new String[]{"用户名","密码"};
         for(int i=0;i<2;i++){
             l1[i]=new JLabel(c[i]);
