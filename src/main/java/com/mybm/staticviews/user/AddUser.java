@@ -1,6 +1,7 @@
 package com.mybm.staticviews.user;
 
 import com.mybm.dao.UserDAO;
+import com.mybm.pojo.Users;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,8 +22,11 @@ public class AddUser extends JFrame {
 
     private JPanel panel,p1,p2;
 
+    private UserDAO user;
+
     public AddUser(String s){
         super(s);
+        user=new UserDAO(Users.class);
         l1=new JLabel[2];
         f1=new JTextField[2];
 
@@ -40,13 +44,13 @@ public class AddUser extends JFrame {
         p2.add(b1);
         p2.add(b2);
         b1.addActionListener(e -> {
-            Boolean is=false;
+            int is=0;
             try {
-                is=UserDAO.AddUser(f1[0].getText(),f1[1].getText());
+                is = user.InsertPojo(new Users(null, f1[0].getText(), f1[1].getText()));
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            if(is){
+            if(is!=0){
                 JOptionPane.showMessageDialog(null,"succ");
             }else {
                 JOptionPane.showMessageDialog(null,"error");

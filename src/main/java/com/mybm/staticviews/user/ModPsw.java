@@ -1,6 +1,7 @@
 package com.mybm.staticviews.user;
 
 import com.mybm.dao.UserDAO;
+import com.mybm.pojo.Users;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +21,11 @@ public class ModPsw extends JFrame {
 
     private JPanel panel,p1,p2;
 
+    private UserDAO user;
+
     public ModPsw(String s){
         super(s);
+        user=new UserDAO(Users.class);
         l1=new JLabel[4];
         f1=new JTextField[4];
 
@@ -46,13 +50,13 @@ public class ModPsw extends JFrame {
             panel.add(f1[i]);
         }
         b1.addActionListener(e -> {
-            Boolean is=false;
+            int is=0;
             try {
-                is=UserDAO.updatePsw(f1[0].getText(),f1[1].getText());
+                is =user.UpdatePojo(new String[]{"password"},new String[]{"name"},new Object[]{f1[3].getText(),f1[0].getText()});
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            if(is){
+            if(is!=0){
                 JOptionPane.showMessageDialog(null,"succ");
             }else {
                 JOptionPane.showMessageDialog(null,"error");

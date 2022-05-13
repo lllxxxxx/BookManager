@@ -1,6 +1,7 @@
 package com.mybm.staticviews.user;
 
 import com.mybm.dao.UserDAO;
+import com.mybm.pojo.Users;
 
 import javax.swing.*;
 import javax.swing.table.AbstractTableModel;
@@ -27,10 +28,14 @@ public class DeleteUser extends JFrame {
 
     private Vector<Vector<Object>> o;
 
+    private UserDAO user;
+
+
     {
+        user=new UserDAO(Users.class);
         List<Object[]> list = null;
         try {
-            list= UserDAO.selectAll();
+            list=user.SelectAllUseList();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -63,13 +68,13 @@ public class DeleteUser extends JFrame {
         b[0].addActionListener(e -> {
             String valueAt = (String) table.getValueAt(table.getSelectedRow(), table.getSelectedColumn());
             System.out.println(table.getSelectedColumn());
-            Boolean b=false;
+            int b=0;
             try {
-                b=UserDAO.DelectCHoosen(valueAt,table.getSelectedColumn());
+                b = user.DelectPojo(null, valueAt);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
-            if(b==true){
+            if(b!=0){
                 List<Object[]> list = null;
                 try {
                     list= UserDAO.selectAll();
